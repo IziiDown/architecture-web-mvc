@@ -1,0 +1,9 @@
+<?php
+header('Content-Type: application/json');
+http_response_code($responseCode ?? 200);
+
+echo json_encode([
+    'success' => true,
+    'data' => $data ?? null,
+    'message' => $message ?? 'Operation successful'
+]);

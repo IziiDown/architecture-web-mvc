@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Transmettre l'en-tête Authorization à $_SERVER['HTTP_AUTHORIZATION']
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Rediriger toutes les requêtes vers route.php si le fichier ou le dossier demandé n'existe pas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ route.php [QSA,L]
