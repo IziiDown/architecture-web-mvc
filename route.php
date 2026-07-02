@@ -78,7 +78,6 @@ if (!$isPublicRoute) {
 
     $token = $matches[1];
     try {
-        $payload = JWT::validate($token);
         $_REQUEST['user'] = $payload->toArray();
     } catch (Exception $e) {
         http_response_code(401);
