@@ -1,12 +1,10 @@
 <?php
-/**
- * Configuration de la connexion à la base de données via PDO
- */
+
 function getConnection() {
     $host = 'localhost';
     $dbname = 'eval_mvc_tickets';
     $username = 'root';
-    $password = ''; // Le mot de passe local MySQL standard est vide ou 'root' selon la configuration
+    $password = ''; 
 
     try {
         $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
@@ -17,7 +15,7 @@ function getConnection() {
         ];
         return new PDO($dsn, $username, $password, $options);
     } catch (PDOException $e) {
-        // Retourne une erreur serveur 500 au format JSON si la connexion échoue
+
         header('Content-Type: application/json');
         http_response_code(500);
         echo json_encode([
